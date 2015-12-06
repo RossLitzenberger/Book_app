@@ -1,5 +1,8 @@
 <h1>testing</h1>
 <% @books.each do |book|%>
-  <%= book.book_name%>
-  <%= book.author%>
+  <ul class="col-md-3">
+      <li><%= book.book_name%></li>
+      <li><%= book.author%></li>
+      <%= link_to "Show", book, class: "btn btn-primary"%>
+  </ul>
 <% end %>
