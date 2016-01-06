@@ -1,0 +1,16 @@
+<%= form_for @book do |f| %>
+  <% if @book.errors_any?%>
+  <h2><%= pluralize(@book.errors.count, "error")%> prohibited this book from being saved:</h2>
+
+  <% end %>
+  <%= f.label :book_name%>:
+  <%= f.text_field :book_name%>
+  <br>
+  <%= f.label :author%>:
+  <%= f.text_field :author%>
+  <br>
+  <%= f.label :illustator%>:
+  <%= f.text_field :illustator%>
+  <br>
+  <%= f.submit  %>
+<% end %>
