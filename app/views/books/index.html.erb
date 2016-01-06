@@ -1,8 +1,10 @@
-<h1>testing</h1>
 <% @books.each do |book|%>
   <ul class="col-md-3">
+      <li><%=book.created_at.strftime("%b. %d  %Y") %></li>
       <li><%= book.book_name%></li>
       <li><%= book.author%></li>
+      <li><%= book.illustator %></li>
       <%= link_to "Show", book, class: "btn btn-primary"%>
+      <%= link_to "Edit", edit_book_path(book), class: "btn btn-primary"%>
   </ul>
 <% end %>

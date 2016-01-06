@@ -5,9 +5,27 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Book.destroy_all
+
 100.times do
   Book.create!(
+    :created_at => Faker::Time.between(2.days.ago, Time.now, :all),
     :book_name => Faker::Book.title,
-    :author => Faker::Book.author
+    :author => Faker::Book.author,
+    :illustator => Faker::Name.name
   )
 end
+
+Book.create!(
+:created_at => Faker::Time.forward(23, :morning) ,
+:book_name => "friendslife",
+:author => "gotte&sorr",
+:illustator => "sc21")
+
+Book.create!(
+:created_at => Faker::Time.forward(23, :morning) ,
+:book_name => "friendslife",
+:author => "gotte&sorr",)
+
+puts "#{Book.count}"
