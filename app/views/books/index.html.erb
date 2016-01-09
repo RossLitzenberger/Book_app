@@ -4,6 +4,7 @@
       <li><%= book.book_name%></li>
       <li><%= book.author%></li>
       <li><%= book.illustator %></li>
+      <li><%= image_tag(book.cover.url(:thumbnail))%></li>
       <%= link_to "New", new_book_path(book), class: "btn btn-primary"%>
       <%= link_to "Show", book, class: "btn btn-primary"%>
       <%= link_to "Edit", edit_book_path(book), class: "btn btn-primary"%>
