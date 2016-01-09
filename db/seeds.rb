@@ -13,7 +13,8 @@ Book.destroy_all
     :created_at => Faker::Time.between(2.days.ago, Time.now, :all),
     :book_name => Faker::Book.title,
     :author => Faker::Book.author,
-    :illustator => Faker::Name.name
+    :illustator => Faker::Name.name,
+    :cover => Faker::Placeholdit.image("300x300", 'jpg')
   )
 end
 

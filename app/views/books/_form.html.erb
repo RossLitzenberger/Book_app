@@ -1,7 +1,6 @@
-<%= form_for @book do |f| %>
+<%= form_for @book, url: books_path, html: { multipart: true } do |f| %>
 
-    <%= form_errors_for @book%>
-
+  <%= form_errors_for @book%>
 
   <%= f.label :book_name%>:
   <%= f.text_field :book_name%>
@@ -11,6 +10,13 @@
   <br>
   <%= f.label :illustator%>:
   <%= f.text_field :illustator%>
+  <br>
+  <% if @book.cover.exists? %>
+    <%= image_tag @book.cover.url(:medium) %>
+  <% end %>
+
+  <%= f.label :cover,  "Attach an Image"  %>
+  <%= f.file_field :cover %>
   <br>
   <%= f.submit  %>
 <% end %>
