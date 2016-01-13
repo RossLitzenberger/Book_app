@@ -3,3 +3,8 @@
 <p>Author: <%= @book.author%></p>
 <p>Illustator: <%= @book.illustator%></p>
 <p>Book Cover: <%= image_tag(@book.cover.url(:medium))%></p>
+
+<p><%= @book.comments.count %></p>
+<p><%= render @book.comments %> Comments</p>
+
+<p><%= render "comments/form" %></p>
