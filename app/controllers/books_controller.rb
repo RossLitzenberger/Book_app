@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
+
   end
 
   def show
