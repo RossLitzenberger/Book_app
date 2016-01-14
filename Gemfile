@@ -13,7 +13,7 @@ gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'will_paginate', '~> 3.1'
 gem 'acts_as_votable', '~> 0.10.0'
-
+gem 'devise', '~> 3.5', '>= 3.5.3'
 group :development, :test do
   gem 'byebug'
   gem 'faker'
