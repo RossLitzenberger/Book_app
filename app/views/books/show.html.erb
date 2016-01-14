@@ -9,6 +9,8 @@
 <% else %>
   <%= image_tag "medium/missing.png"%></p>
 <% end %>
+<%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
+<br>
 <p><%= @book.comments.count %></p>
 <p><%= render @book.comments %> Comments</p>
 
