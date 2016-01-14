@@ -12,6 +12,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'will_paginate', '~> 3.1'
+gem 'acts_as_votable', '~> 0.10.0'
+
 group :development, :test do
   gem 'byebug'
   gem 'faker'
