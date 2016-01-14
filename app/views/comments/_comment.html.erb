@@ -3,5 +3,5 @@
   <p><%= comment.body %></p>
   <p><%= time_ago_in_words(comment.created_at) %> Ago</p>
   <p><%= link_to 'Delete', [comment.book, comment],
-  method: :delete, class: 'button', data: {confirm: 'Are you sure? '} %></p>
+  method: :delete, class: 'button', data: {confirm: 'Are you sure? '}, class: "btn btn-danger" %></p>
 </div>

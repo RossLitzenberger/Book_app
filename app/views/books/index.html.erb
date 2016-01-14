@@ -9,6 +9,7 @@
       <li><%= image_tag(book.cover.url(:thumbnail))%></li>
       <%= link_to "Show", book, class: "btn btn-primary"%>
       <%= link_to "Edit", edit_book_path(book), class: "btn btn-primary"%>
+      <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
   </ul>
 
 <% end %>
