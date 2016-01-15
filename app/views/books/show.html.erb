@@ -2,6 +2,7 @@
 <p>Book_name: <%= @book.book_name%></p>
 <p>Author: <%= @book.author%></p>
 <p>Illustator: <%= @book.illustator%></p>
+<p>User: <%= @book.user.email%></p>
 
 <p>Book Cover: <br>
 <% if @book.cover.present? %>

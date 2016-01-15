@@ -6,10 +6,13 @@
       <li><%= book.book_name%></li>
       <li><%= book.author%></li>
       <li><%= book.illustator %></li>
+      <li><%= book.user.email %></li>
       <li><%= image_tag(book.cover.url(:thumbnail))%></li>
       <%= link_to "Show", book, class: "btn btn-primary"%>
+      <% if book.user == current_user  %>
       <%= link_to "Edit", edit_book_path(book), class: "btn btn-primary"%>
       <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
+      <% end %>
   </ul>
 
 <% end %>
