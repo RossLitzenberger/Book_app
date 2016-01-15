@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, only: [:index, :show]
   def index
     @books = Book.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
@@ -37,6 +37,16 @@ class BooksController < ApplicationController
     @book.delete.save
 
     redirect_to root_path
+  end
+
+  def upvote
+    @book.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @book.downvote_by current_user
+    redirect_to :back
   end
 
   private
