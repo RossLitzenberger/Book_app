@@ -10,8 +10,14 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <div class="col-md-12">
-  <%= link_to "Sign Up", new_user_registration_path , class: "btn btn-info" %>
-  <%= link_to "Sign In", new_user_session_path , class: "btn btn-info" %>
+  <% if user_signed_in? %>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-info" %>
+    <%= link_to "Profile", edit_user_registration_path , class: "btn btn-info" %>
+    <%= link_to "New", new_book_path, class: "btn btn-primary"%>
+  <% else %>
+    <%= link_to "Sign Up", new_user_registration_path , class: "btn btn-info" %>
+    <%= link_to "Sign In", new_user_session_path , class: "btn btn-info" %>
+  <% end %>
   <%= yield %>
   <%= yield :form_errors %>
   </div>
