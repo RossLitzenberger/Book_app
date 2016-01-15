@@ -10,7 +10,19 @@
 <% else %>
   <%= image_tag "medium/missing.png"%></p>
 <% end %>
+<p><%= @book.get_upvotes.size  %> Like</p>
+<p><%= @book.get_downvotes.size  %> Dislike</p>
+<%= link_to 'Like', like_book_path(@book), class: "btn btn-default", method: :get  %>
+ <br>
+<%= link_to 'Dislike', dislike_book_path(@book), class: "btn btn-default", method: :get  %>
+
+<br>
+<% if @book.user == current_user %>
 <%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
+<% end %>
+
+
+
 <br>
 <p><%= @book.comments.count %></p>
 <p><%= render @book.comments %> Comments</p>
