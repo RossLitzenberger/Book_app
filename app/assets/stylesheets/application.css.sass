@@ -13,10 +13,130 @@
  *
  *
  */
+
+@import "normalize"
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import "style"
 
-$bg-color: #1C86EE
+$blue: #4A90E2
+$gray: #FFFFFF
+$bold: #000000
+$darkgray: #7C7B7B
+$slider: #202832
 
-ul
-  list-style: none
+*
+	list-style: none
+	text-decoration: none
+	margin: 0 auto
+.cmh
+	min-height: 300px
+
+
+html, body
+	background: white
+
+	h1,h2,h3
+		margin: 10px auto
+		// font-weight: lighter
+		// font-weight: 400
+		// font-size: xx-large
+		// font-family: 'Muli'
+	p
+
+		// font-size: 100
+		// font-weight: 400
+		// font-family: 'Raleway'
+
+
+body
+	heigth: 1820px
+	padding-bottom: 70px
+
+	.container
+		width: 100%
+		margin: 0% auto
+
+	// header/nav
+	.over-lay
+		background: url('book2.png')
+		background-size: cover
+	.image-bg
+		background-color: rgba(0,75,200, 0.25)
+	#nav_bar
+		font-weight: 24
+		font-family: icomoon
+		min-width: 15px
+		margin-top: 15px
+	header
+		width: 0 auto
+		h1
+
+			margin: 0 auto
+			max-width: 200px
+			min-width: 200px
+			padding: 20px 25px
+			text-align: center
+			color: $blue
+			background-color: rgba(0,0,0,0.50)
+			font-size: 20px
+
+
+
+		.space
+			height: 100px
+		// fittext
+		.book_week
+			background-color: rgba(0,0,0,0.50)
+			margin: 0 auto
+			max-width: 500px
+
+			padding: 10px
+			.week
+				margin: 0% 3px
+				h2,h4
+					text-align: center
+					margin: 0%
+				h2
+
+					font-size: 48px
+					letter-spacing: 1px
+					padding-top: 10px
+					color: $blue
+
+				h4
+					letter-spacing: 1px
+					font-size: 18px
+					font-family: 'Raleway'
+					font-weight: 300
+					color: $gray
+					padding-bottom: 10px
+		.btn-space
+			height: 45px
+		.header_btn
+			margin: 0% auto
+			text-align: center
+			font-weight: lighter
+
+			a
+				text-decoration: none
+				color: white
+				margin: 0% 15%
+				text-align: center
+				border: 1px solid white
+				font-size: 16px
+				padding: 10px 40px
+			p
+				color: white
+				letter-spacing: 1px
+				font-size: small
+				margin-top: 25px
+
+
+	#title
+		text-align: center
+		font-size: 36px
+		font-weight: 300
+		width: 1180px
+		padding: 0 30px
+		margin: 4.7% auto
