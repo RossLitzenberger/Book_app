@@ -10,6 +10,8 @@ Book.destroy_all
 User.destroy_all
 
 User.create!(
+  :first_name => 'Ross',
+  :last_name => 'Litzenberger',
   :email => 'ross@bookapp.com',
   :password => 'topsecret',
   :password_confirmation => 'topsecret',
@@ -18,14 +20,16 @@ User.create!(
 
 99.times do
   Book.create!(
-    :created_at => Faker::Time.between(2.days.ago, Time.now, :all),
     :book_name => Faker::Book.title,
     :author => Faker::Book.author,
     :illustator => Faker::Name.name,
     :cover => Faker::Placeholdit.image("300x300", 'png'),
-    :user_id => rand(1..100)
+    :user_id => rand(1..100),
+    :created_at => Faker::Time.between(2.days.ago, Time.now, :all)
   )
   User.create!(
+    :first_name => Faker::Name.first_name,
+    :last_name => Faker::Name.last_name,
     :email => Faker::Internet.email,
     :password => Faker::Internet.password
   )
