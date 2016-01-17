@@ -1,11 +1,11 @@
 <%= form_for ([@book, @book.comments.build]) do |f| %>
   <%= form_errors_for @book%>
-  <p>
+  <div class="form-group">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </p>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
   <br>
-  <p>
+  <div class="form-group">
     <%= f.submit class: "btn btn-success" %>
-  </p>
+  </div>
 <% end %>
