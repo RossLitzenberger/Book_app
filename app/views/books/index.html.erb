@@ -7,6 +7,7 @@
         <li><%= book.author%></li>
         <li><%= book.illustator %></li>
         <li><%= book.user.name %></li>
+        <li><%= book.description.truncate(150) %></li>
         <li><%= image_tag(book.cover.url(:thumbnail))%></li>
         <%= link_to "Show", book, class: "btn btn-primary"%>
         <% if book.user == current_user  %>
