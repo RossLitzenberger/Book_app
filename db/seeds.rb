@@ -22,6 +22,7 @@ User.create!(
   Book.create!(
     :book_name => Faker::Book.title,
     :author => Faker::Book.author,
+    :description =>Faker::Lorem.paragraphs(15), 
     :illustator => Faker::Name.name,
     :cover => Faker::Placeholdit.image("300x300", 'png'),
     :user_id => rand(1..100),
@@ -41,6 +42,7 @@ Book.create!(
 :created_at => Faker::Time.forward(23, :morning) ,
 :book_name => "friendslife",
 :author => "gotte&sorr",
+:description =>Faker::Lorem.paragraphs(15), 
 :illustator => "sc21",
 :user_id => 1)
 
@@ -48,6 +50,7 @@ Book.create!(
 :created_at => Faker::Time.forward(23, :morning) ,
 :book_name => "friendslife",
 :author => "gotte&sorr",
+:description =>Faker::Lorem.paragraphs(15), 
 :user_id => 1)
 
 puts "#{Book.count}" + "#{User.count}"
