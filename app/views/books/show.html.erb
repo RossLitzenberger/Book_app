@@ -1,36 +1,38 @@
-<div class="col-md-offset-2 col-md-10">
-<h2>Show Book</h2>
-<div>
-  <p>Book Cover: <br>
-  <% if @book.cover.present? %>
-    <%= image_tag @book.cover.url(:medium)%></p>
-  <% else %>
-    <%= image_tag "medium/missing.png"%></p>
-  <% end %>
-</div>
-<div >
-<p>Book_name: <%= @book.book_name%></p>
-<p>Author: <%= @book.author%></p>
-<p>Illustator: <%= @book.illustator%></p>
-<p>User: <%= @book.user.name%></p>
-<p>Description: <%= @book.description%></p>
-</div>
-<p><%= @book.get_upvotes.size  %> Like</p>
-<p><%= @book.get_downvotes.size  %> Dislike</p>
-<%= link_to 'Like', like_book_path(@book), class: "btn btn-default", method: :get  %>
- <br>
-<%= link_to 'Dislike', dislike_book_path(@book), class: "btn btn-default", method: :get  %>
+<div class="col-md-offset-2 col-md-8">
+  <h2>Show Book</h2>
+  <div class="showPage">
+    <div class="showimage">
+      <% if @book.cover.present? %>
+      <%= image_tag @book.cover.url(:medium)%>
+      <% else %>
+      <%= image_tag "medium/missing.png"%>
+      <% end %>
+      <p class="showinfo">Author: <%= @book.author%></p>
+      <p class="showinfo">Illustator: <%= @book.illustator%></p>
 
-<br>
-<% if @book.user == current_user %>
-<%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
-<% end %>
+    </div>
 
+    <h5>Reviewed by <%= @book.user.name%></h5>
+    <p id="date"> <%= @book.user.created_at.strftime('%b %d, %Y')%></p>
+    <p>Description: <%= @book.description%></p>
 
+    <ul class="list-inline">
+      <%= link_to  like_book_path(@book), class: "btn btn-default", method: :get  do %>
+      <%= @book.get_upvotes.size %> Like
+      <% end %>
+      <%= link_to  dislike_book_path(@book), class: "btn btn-default", method: :get  do %>
+      <%= @book.get_downvotes.size %> Dislike
+      <% end %>
+      <% if @book.user == current_user %>
+      <%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
+      <% end %>
+    </ul>
 
-<br>
-<p><%= @book.comments.count %></p>
-<p><%= render @book.comments %> Comments</p>
+  </div>
+  <div class="commentsection">
+    <p><%=  render   @book.comments %> </p>
+    <h3>Join the discussion</h3>
+    <p><%=  render partial: "comments/form" %></p>
+  </div>
 
-<p><%= render "comments/form" %></p>
 </div>
