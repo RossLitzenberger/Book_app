@@ -2,7 +2,7 @@
   <h2>Show Book</h2>
   <div class="showPage">
     <div class="bar">
-      <div class="showimage">
+      <div class="showimage col-xs-12 no-padding-left">
         <% if @book.cover.present? %>
         <%= image_tag @book.cover.url(:medium)%>
         <% else %>
@@ -12,24 +12,26 @@
         <p class="showinfo">Illustator: <%= @book.illustator%></p>
 
       </div>
-      <div>
-        <p id="commentcount"><%= @book.comments.count %> Comments</p>
-        <h5>Reviewed by <%= @book.user.name%></h5>
-        <p id="date"> <%= @book.user.created_at.strftime('%b %d, %Y')%></p>
-      </div>
-      <p>Description: <%= @book.description%></p>
+      <div class="showcontent">
+        <div>
+          <p id="commentcount" class="clr-blue glyphicon glyphicon-comment comment"><%= @book.comments.count %> Comments</p>
+          <h5>Reviewed by <%= @book.user.name%></h5>
+          <p class="clr-gray"> <%= @book.user.created_at.strftime('%b %d, %Y')%></p>
+        </div>
+        <p><%= @book.description%></p>
 
-      <ul class="list-inline">
-        <%= link_to  like_book_path(@book), class: "btn btn-default", method: :get  do %>
-        <%= @book.get_upvotes.size %> Like
-        <% end %>
-        <%= link_to  dislike_book_path(@book), class: "btn btn-default", method: :get  do %>
-        <%= @book.get_downvotes.size %> Dislike
-        <% end %>
-        <% if @book.user == current_user %>
-        <%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
-        <% end %>
-      </ul>
+        <ul class="list-inline">
+          <%= link_to  like_book_path(@book), class: "btn btn-default", method: :get  do %>
+          <%= @book.get_upvotes.size %> Like
+          <% end %>
+          <%= link_to  dislike_book_path(@book), class: "btn btn-default", method: :get  do %>
+          <%= @book.get_downvotes.size %> Dislike
+          <% end %>
+          <% if @book.user == current_user %>
+          <%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="commentsection ">
@@ -39,7 +41,7 @@
       <div class="layout-margin bar">
         <div class="list-inline">
           <p><%= comment.user.name %></p>
-          <p id="date"><%= time_ago_in_words(comment.created_at) %> Ago</p>
+          <p class="clr-gray"><%= time_ago_in_words(comment.created_at) %> Ago</p>
         </div>
         <p class="clearfix"><%= comment.content %></p>
         <ul class="list-inline">

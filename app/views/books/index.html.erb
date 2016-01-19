@@ -1,22 +1,40 @@
 <div class="row col-md-offset-3">
   <div class="col-md-9">
-  <% @books.each do |book|%>
-    <ul class="col-md-4">
-        <li><%=book.created_at.strftime("%b. %d  %Y") %></li>
-        <li><%= book.book_name%></li>
-        <li><%= book.author%></li>
-        <li><%= book.illustator %></li>
-        <li><%= book.user.name %></li>
-        <li><%= book.description.truncate(150) %></li>
-        <li><%= image_tag(book.cover.url(:thumbnail))%></li>
-        <%= link_to "Show", book, class: "btn btn-primary"%>
-        <% if book.user == current_user  %>
-        <%= link_to "Edit", edit_book_path(book), class: "btn btn-primary"%>
-        <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
-        <% end %>
-        <%= book.comments.count %>
-    </ul>
-  <% end %>
+    <h1 class="text-center">Lastest Reviews</h1>
+    <% @books.each do |book|%>
+    <div class="row layout-margin bar bookinfo">
+      <div class="col-sm-4 col-md-4">
+        <%= image_tag(book.cover.url(:medium))%>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-8 ">
+        <div class="layout-margin">
+          <div class="col-md-6 col-sm-6 col-xs-6 no-padding-left">
+            <p class="text-left clr-blue"><%= book.book_name %></p>
+            <p class="text-left clr-gray"> written by <%= book.author%></p>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <p class="text-right">Reviewed By <%= book.user.name %></p>
+            <p class="text-right clr-gray">on <%=book.created_at.strftime("%b. %d  %Y") %></p>
+          </div>
+        </div>
+        <li><%= book.description.truncate(500) %></li>
+        <div class="col-md-6 col-sm-6 col-xs-6 no-padding-left layout-margin">
+          <li class="glyphicon glyphicon-comment comment clr-blue"><%= book.comments.count %></li>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+          <li><%= link_to "Continue Reading", book%><i class="glyphicon  glyphicon-menu-right clr-blue"></i></li>
+        </div>
+        <br>
+        <div class="col-md-12 no-padding-left layout-margin">
+          <% if book.user == current_user  %>
+            <%= link_to "Edit", edit_book_path(book), class: "btn btn-info"%>
+            <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
   </div>
 </div>
 <div class="text-center">
