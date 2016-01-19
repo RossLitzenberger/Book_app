@@ -1,9 +1,9 @@
-<%= form_for ([@book, @book.comments.build]) do |f| %>
+<%= form_for ([@book, Comment.new]) do |f| %>
   <%= form_errors_for @book%>
   <div class="form-group">
     <%= f.text_area :content, class: "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.submit class: "btn btn-success" %>
   </div>

@@ -3,14 +3,10 @@ class CommentsController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
-    @comment = Comment.create(comment_params)
+    @comment = @book.comments.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.book_id = @book.id
-    if @comment.save
-      redirect_to book_path(@book)
-    else
-      render 'new'
-    end
+    @comment.save
+    redirect_to book_path(@book)
   end
 
   def destroy
@@ -34,6 +30,6 @@ class CommentsController < ApplicationController
   end
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :user_id, :book_id)
   end
 end
