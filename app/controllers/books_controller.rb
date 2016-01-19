@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
   end
 
-  def show
+  def show    
   end
 
   def new
