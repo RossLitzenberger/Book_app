@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
   end
 
-  def show    
+  def show
   end
 
   def new
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
     if @book.update_attributes(book_params)
       redirect_to @book
     else
-      render book_path
+      render 'edit'
     end
   end
 

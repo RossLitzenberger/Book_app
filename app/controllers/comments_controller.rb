@@ -5,8 +5,13 @@ class CommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @comment = @book.comments.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    redirect_to book_path(@book)
+    if @comment.save
+      redirect_to book_path(@book)
+      flash[:success] = "Created the comment"
+    else
+      redirect_to book_path(@book)
+      flash[:alert] = "Sorry the comment was not save"
+    end
   end
 
   def destroy
